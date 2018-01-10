@@ -33,17 +33,23 @@ def run():
     print ids[0]
     print prices[0]
 
-    # c = open("order.csv", 'ab')
-    # w = csv.writer(c)
+
+
 
     order_id = 834678
 
     miao = 0
     order_count = 0
     orders = []
+    all_orders = []
     for i in range(len(ids)):
 
         if miao > 8000000:
+            fuck = open("/Users/liyuan/Documents/Cloud-Computing/Miaomiao-Mall/data_order/all_order_"+str(order_count)+".csv", 'ab')
+            ww = csv.writer(fuck)
+            ww.writerows(all_orders)
+            all_orders = []
+            fuck.close()
             c = open("/Users/liyuan/Documents/Cloud-Computing/Miaomiao-Mall/data_order/order_"+str(order_count)+".csv", 'ab')
             w = csv.writer(c)
             w.writerows(orders)
@@ -62,9 +68,13 @@ def run():
         else:
             count = random.randint(11, 209)
 
+        random_miao = random.randint(0, len_ids - 1)
+
+        all_orders.append((ids[random_miao], count + random.randint(-192, 2394), count))
+
         for j in range(count):
             fake = fakes[random.randint(0, len_fakes-1)]
-            random_miao = random.randint(0, len_ids-1)
+
             date = HandleJson.random_date()
             orders.append((order_id, ids[random_miao], prices[random_miao], fake[0], fake[1], fake[2], date))
             order_id += 1

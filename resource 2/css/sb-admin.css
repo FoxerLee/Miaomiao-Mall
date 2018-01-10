@@ -229,6 +229,8 @@ body.sidenav-toggled .navbar-sidenav {
   width: 55px; }
   body.sidenav-toggled .navbar-sidenav .nav-link-text {
     display: none; }
+  body.sidenav-toggled .navbar-sidenav .nav-link-text2 {
+    display: none; }
   body.sidenav-toggled .navbar-sidenav .nav-item,
   body.sidenav-toggled .navbar-sidenav .nav-link {
     width: 55px !important; }
