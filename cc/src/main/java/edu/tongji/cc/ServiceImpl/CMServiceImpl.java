@@ -12,7 +12,7 @@ public class CMServiceImpl implements CMService{
 
     @Override
     public Object getDataOfDaysByMonth(int month, String classifiication_id){
-        final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miao";
+        final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miaomiao";
         final String USER = "hive";
         final String PASS = "hive";
         Connection conn = null;

@@ -47,6 +47,7 @@ public class PMServiceImpl implements PMService {
         final String PASS = "hive";
         Connection conn = null;
         Statement stmt = null;
+        // 为了提升性能，统计统计操作放在后端做
         try {
             Class.forName("org.apache.hive.jdbc.HiveDriver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -54,11 +55,15 @@ public class PMServiceImpl implements PMService {
             String sql = "SELECT * from pm_statistics WHERE  product_id = \'" + product_id + "\'";
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
+
+            // 初始化12个月
             int[] data = new int[12];
             for(int i = 0; i < data.length; i++)
                 data[i] = 0;
+            // 累加每个月的所有天的销售量
             while(rs.next())
                 data[rs.getInt("month") - 1] += 1;
+
             rs.close();
             stmt.close();
             conn.close();
