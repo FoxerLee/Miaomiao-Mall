@@ -23,8 +23,8 @@ def address():
     # line = file.readline()
     # datas = eval(line.decode('utf-8'))
     # print datas
-    c = open('address1.csv', 'ab')
-    w = csv.writer(c)
+    # c = open('address1.csv', 'ab')
+    # w = csv.writer(c)
     while 1:
         line = file.readline()
         if not line:
@@ -50,10 +50,10 @@ def address():
                     # print miao['name']
                     three = miao['name']
 
-
-                    address = one + two + three
-                    print address
-                    w.writerow((address, miao['code']))
+                address = one + two
+                    # address = one + two + three
+                print address
+                    # w.writerow((address, miao['code']))
 
 
 def street():
@@ -98,5 +98,5 @@ def street():
 
 
 if __name__ == '__main__':
-    # address()
-    street()
+    address()
+    # street()

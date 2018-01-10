@@ -12,107 +12,54 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-app="myApp" ng-controller="siteCtrl">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="../index.html">销售管理</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
-          </a>
-        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">查询</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">Navbar</a>
+              <a href="index.html">类别查询</a>
             </li>
             <li>
-              <a href="cards.html">Cards</a>
+              <a href="cards.html">地址查询</a>
+            </li>
+            <li>
+              <a href="tables.html">商品查询</a>
+            </li>
+            <li>
+              <a href="orders.html">订单查询</a>
             </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">商品信息管理</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">Login Page</a>
+              <a href="newproduct.html">增加商品信息</a>
             </li>
             <li>
-              <a href="register.html">Registration Page</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
-            </li>
-            <li>
-              <a href="blank.html">Blank Page</a>
+              <a href="modifyproduct.html">修改商品信息</a>
             </li>
           </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
-          </a>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
@@ -221,20 +168,50 @@
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">Navbar</li>
-      </ol>
-      <h1>Navbar</h1>
-      <hr>
-      <p>The SB Admin navbar can be either fixed or static, and it supports the navbar-light and navbar-dark Bootstrap 4 classes.</p>
-      <a class="btn btn-primary" href="#" id="toggleNavPosition">Toggle Fixed/Static Navbar</a>
-      <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>
-      <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
-      <div style="height: 1000px;"></div>
+      <!-- Area Chart Example-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-area-chart"></i> 新增商品</div>
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+          <div class="form-group">
+            <br/>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">商品名称 <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">商品类别 <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="category" name="category" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="price" class="control-label col-md-3 col-sm-3 col-xs-12">商品价格</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="price" class="form-control col-md-7 col-xs-12" type="text" name="price">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inventory" class="control-label col-md-3 col-sm-3 col-xs-12">商品库存</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="inventory" class="form-control col-md-7 col-xs-12" type="text" name="inventory">
+            </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button type="submit" class="btn btn-success" ng-click="form_submit()">提交</button>
+            </div>
+          </div>
+
+        </form>
+        <div class="card-footer small text-muted"></div>
+      </div>
+
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
@@ -272,27 +249,40 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <!-- Toggle between fixed and static navbar-->
-    <script>
-    $('#toggleNavPosition').click(function() {
-      $('body').toggleClass('fixed-nav');
-      $('nav').toggleClass('fixed-top static-top');
-    });
-
-    </script>
-    <!-- Toggle between dark and light navbar-->
-    <script>
-    $('#toggleNavColor').click(function() {
-      $('nav').toggleClass('navbar-dark navbar-light');
-      $('nav').toggleClass('bg-dark bg-light');
-      $('body').toggleClass('bg-dark bg-light');
-    });
-
-    </script>
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular-route.js"></script>
   </div>
 </body>
 
 </html>
+
+
+<script type="text/javascript">
+
+    var app = angular.module('myApp', []);
+    app.controller('siteCtrl', function($scope, $http) {
+
+        $scope.form_submit = function () {
+            var product_id = document.getElementById("number").value;
+            var name = document.getElementById("name").value;
+            var category = document.getElementById("category").value;
+            var price = document.getElementById("price").value;
+            var  inventory = document.getElementById(" inventory").value;
+            $http.get("http://localhost:8080/product/index?product_id=" + product_id + "&product=" + name +"&category=" + category + "&price=" + price+ "&inventory=" + inventory)
+                .then(function (response) {
+                    alert("新增商品成功！")
+                });
+            alert(code);
+        };
+    });
+
+</script>

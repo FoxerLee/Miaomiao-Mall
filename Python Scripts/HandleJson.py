@@ -108,6 +108,32 @@ def delete():
 
     csvFile.close()
 
+
+def cc():
+    csvFile = open("new_products12g.csv", 'rb')
+    r = csv.reader(csvFile)
+    datas = [row for row in r]
+
+
+
+    csvFile = open("ll_products11.csv", 'ab')
+    w = csv.writer(csvFile)
+
+
+
+    for data in datas:
+        # if data[2].find(',') != -1:
+        #     print data[2]
+        #     continue
+        # else:
+        w.writerow((data[0], data[2], data[1], random.randint(0, 12938), random.randint(0, 12398), data[6]))
+        csvFile.flush()
+
+    csvFile.close()
+
     
 if __name__ == '__main__':
-    delete()
+    cc()
+    # delete()
+    # for i in range(1, 366):
+    #     print "insert into p_daily (product_id, day, d_sales, d_price) values(\'1\',"+str(i)+", 100, 50.0);"
