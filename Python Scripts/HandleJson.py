@@ -110,23 +110,20 @@ def delete():
 
 
 def cc():
-    csvFile = open("new_products12g.csv", 'rb')
+    csvFile = open("new_products12.csv", 'rb')
     r = csv.reader(csvFile)
     datas = [row for row in r]
 
 
-
-    csvFile = open("ll_products11.csv", 'ab')
+    csvFile = open("product.csv", 'ab')
     w = csv.writer(csvFile)
-
-
 
     for data in datas:
         # if data[2].find(',') != -1:
         #     print data[2]
         #     continue
         # else:
-        w.writerow((data[0], data[2], data[1], random.randint(0, 12938), random.randint(0, 12398), data[6]))
+        w.writerow((data[0], data[2], data[1], random.randint(0, 12938), random.randint(0, 12398), data[3], data[6]))
         csvFile.flush()
 
     csvFile.close()

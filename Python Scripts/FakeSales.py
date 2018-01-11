@@ -120,83 +120,171 @@ def product():
         csvFile.close()
 
 
-def ly_address():
+# def ly_address():
+#
+#     file = open("dist/pca-code.json", 'rb')
+#     # line = file.readline()
+#     # datas = eval(line.decode('utf-8'))
+#     # print datas
+#     c = open('o_statistics.csv', 'ab')
+#     w = csv.writer(c)
+#     while 1:
+#         line = file.readline()
+#         if not line:
+#             break
+#         datas = eval(line.decode('utf-8'))
+#         # datas = json.loads(line.decode('utf-8'), object_hook=JSONObject)
+#
+#         # for name in datas['name']:
+#         #     print name
+#         for i in range(len(datas)):
+#             one = datas[i]['name']
+#
+#             # print type(datas[i]['childs'])
+#             # childs = eval(datas[i]['childs'])
+#
+#             for child in datas[i]['childs']:
+#                 # child = eval(child)
+#                 # print child['code']
+#
+#                 two = child['name']
+#
+#                 # address = one + two
+#                 # address = one + two + three
+#                 # print address
+#                 # w.writerow((address, miao['code']))
+#
+#             for month in range(1, 13):
+#                 month_count = 0
+#                 if month == 1 or month == 3 or month == 5 or month == 7 or month == 8:
+#                     for day in range(1, 32):
+#                         day_count = random.randint(0, 47197)
+#
+#                         w.writerow((one, month, day, day_count))
+#                         c.flush()
+#                         month_count += day_count
+#
+#                 if month == 10 or month == 12:
+#                     for day in range(1, 32):
+#                         day_count = random.randint(0, 59612)
+#
+#                         w.writerow((one, month, day, day_count))
+#                         c.flush()
+#                         month_count += day_count
+#
+#                 if month == 4 or month == 6:
+#                     for day in range(1, 31):
+#                         day_count = random.randint(0, 73474)
+#
+#                         w.writerow((one, month, day, day_count))
+#                         c.flush()
+#                         month_count += day_count
+#
+#                 if month == 9 or month == 11:
+#                     for day in range(1, 31):
+#                         day_count = random.randint(0, 63437)
+#
+#                         w.writerow((one, month, day, day_count))
+#                         c.flush()
+#                         month_count += day_count
+#
+#                 if month == 2:
+#                     for day in range(1, 29):
+#                         day_count = random.randint(0, 83759)
+#
+#                         w.writerow((one, month, day, day_count))
+#                         c.flush()
+#                         month_count += day_count
+#
+#     c.close()
 
-    file = open("dist/pca-code.json", 'rb')
-    # line = file.readline()
-    # datas = eval(line.decode('utf-8'))
-    # print datas
-    c = open('o_statistics.csv', 'ab')
-    w = csv.writer(c)
-    while 1:
-        line = file.readline()
-        if not line:
-            break
-        datas = eval(line.decode('utf-8'))
-        # datas = json.loads(line.decode('utf-8'), object_hook=JSONObject)
+def ly_class():
+    csvFile = open("wash_class.csv", "rb")
+    r = csv.reader(csvFile)
+    datas = [row[0] for row in r]
 
-        # for name in datas['name']:
-        #     print name
-        for i in range(len(datas)):
-            one = datas[i]['name']
+    c1 = open('cm_statistics.csv', 'ab')
+    w1 = csv.writer(c1)
 
-            # print type(datas[i]['childs'])
-            # childs = eval(datas[i]['childs'])
+    c2 = open('classification.csv', 'ab')
+    w2 = csv.writer(c2)
 
-            for child in datas[i]['childs']:
-                # child = eval(child)
-                # print child['code']
+    miao = 0
+    for i in range(len(datas)):
+        one = datas[i]
+        all_count = 0
+        for month in range(1, 13):
+            month_count = 0
+            if month == 1 or month == 3 or month == 5 or month == 7 or month == 8:
+                for day in range(1, 32):
+                    day_count = random.randint(0, 47197)
 
-                two = child['name']
+                    w1.writerow((one, month, day, day_count))
+                    c1.flush()
+                    month_count += day_count
 
-                # address = one + two
-                # address = one + two + three
-                # print address
-                # w.writerow((address, miao['code']))
+            if month == 10 or month == 12:
+                for day in range(1, 32):
+                    day_count = random.randint(0, 59612)
 
-            for month in range(1, 13):
-                month_count = 0
-                if month == 1 or month == 3 or month == 5 or month == 7 or month == 8:
-                    for day in range(1, 32):
-                        day_count = random.randint(0, 47197)
+                    w1.writerow((one, month, day, day_count))
+                    c1.flush()
+                    month_count += day_count
 
-                        w.writerow((one, month, day, day_count))
-                        c.flush()
-                        month_count += day_count
+            if month == 4 or month == 6:
+                for day in range(1, 31):
+                    day_count = random.randint(0, 73474)
 
-                if month == 10 or month == 12:
-                    for day in range(1, 32):
-                        day_count = random.randint(0, 59612)
+                    w1.writerow((one, month, day, day_count))
+                    c1.flush()
+                    month_count += day_count
 
-                        w.writerow((one, month, day, day_count))
-                        c.flush()
-                        month_count += day_count
+            if month == 9 or month == 11:
+                for day in range(1, 31):
+                    day_count = random.randint(0, 63437)
 
-                if month == 4 or month == 6:
-                    for day in range(1, 31):
-                        day_count = random.randint(0, 73474)
+                    w1.writerow((one, month, day, day_count))
+                    c1.flush()
+                    month_count += day_count
 
-                        w.writerow((one, month, day, day_count))
-                        c.flush()
-                        month_count += day_count
+            if month == 2:
+                for day in range(1, 29):
+                    day_count = random.randint(0, 83759)
 
-                if month == 9 or month == 11:
-                    for day in range(1, 31):
-                        day_count = random.randint(0, 63437)
+                    w1.writerow((one, month, day, day_count))
+                    c1.flush()
+                    month_count += day_count
+            all_count += month_count
+        w2.writerow((miao, one, all_count))
+        miao += 1
 
-                        w.writerow((one, month, day, day_count))
-                        c.flush()
-                        month_count += day_count
 
-                if month == 2:
-                    for day in range(1, 29):
-                        day_count = random.randint(0, 83759)
+def cc_fake():
+    # csvFile = open("new_products11.csv", "rb")
+    # r = csv.reader(csvFile)
+    # datas = [row[0] for row in r]
+    #
+    # csvFile = open("new_products11.csv", "rb")
+    # r = csv.reader(csvFile)
+    # prices = [row[1] for row in r]
 
-                        w.writerow((one, month, day, day_count))
-                        c.flush()
-                        month_count += day_count
+    # c1 = open("ranking.csv", "ab")
+    # w1 = csv.writer(c1)
+
+    c2 = open("p_daily.csv", "ab")
+    w2 = csv.writer(c2)
+    # for i in range(len(datas)):
+        # for j in range(1, 13):
+        #     w2.writerow((datas[i], j, random.randint(0, 442)))
+        #     c2.flush()
+
+    for j in range(1, 366):
+        w2.writerow(('540014180589', j, random.randint(0, 129), 145.6 + random.randrange(-5, 5)))
+        c2.flush()
+
 
 
 if __name__ == '__main__':
     # product()
-    ly_address()
+    cc_fake()
+    # ly_address()
