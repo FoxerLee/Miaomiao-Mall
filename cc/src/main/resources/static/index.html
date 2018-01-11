@@ -285,16 +285,16 @@
 
         var type=0;
         $scope.query=function() {
-//            alert(type);
+            alert(type);
 //            var name = $scope.cname;
             var name = document.getElementById("cname").value;
             console.log(name);
-            $scope.name = name;
-            $http.get("/cm/day?&name=" + name + "&" + "month=" + type + 1 ).then(function (response) {
+//            $scope.name = name;
+            $http.get("/cm/day?&name=" + name + "&" + "month=" + type ).then(function (response) {
                 var showData = [];
                 var labels = [];
                 temp = response.data.data;
-                console.log(temp);
+                console.log(temp)
                 for (var i = 0; i < temp.length; i++) {
                     showData.push(parseInt(String(temp[i])));
                 }

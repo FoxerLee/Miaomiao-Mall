@@ -286,22 +286,22 @@
                 .then(function (response) {
                     $scope.code = response.data.product_id;
                     $scope.product = response.data.name;
-                    $scope.category = response.data.classfication;
+                    $scope.category = response.data.classification;
                     $scope.price = response.data.current_price;
                     $scope.inventory = response.data.inventory;
                     $scope.sales = response.data.has_saled;
-                    alert(response.data)
+                    alert("查询成功")
                 });
 
         };
 
         $scope.delete = function () {
             code = document.getElementById("code").value;
-            alert("删除商品成功！")
-            $http.get("http://localhost:8080/product/index?code=" + code)
+            alert("删除商品成功！");
+            $http.get("/product/deleteProduct?id=" + $scope.code)
                 .then(function (response) {
                     alert("删除商品成功！")
-                    $scope.productInfo = response.data;
+//                    $scope.productInfo = response.data;
                 });
             alert(code);
         };

@@ -21,6 +21,7 @@ public class ProductController {
     @GetMapping("/getProductInfo")
     @ResponseBody
     public Object getProductInfo(@RequestParam("id") String id){
+        System.out.println(id);
         final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miaomiao";
         final String USER = "hive";
         final String PASS = "hive";
@@ -33,14 +34,29 @@ public class ProductController {
             Jedis jedis = new Jedis("123.207.218.148", 6676);
             jedis.auth("DataWareHouse2017");
 
+            // 是否在updates里面
+            if(jedis.exists("updates")){
+                if (jedis.hexists("updates", id)){
+                    String string = jedis.hget("updates", id);
+                    System.out.println(string);
+                    if (string!=null){
+                        Gson gson = new Gson();
+                        hashMap = gson.fromJson(string, hashMap.getClass());
+                        return hashMap;
+                    }
+                }
+            }
+
             //是否在inserts里面
             if(jedis.exists("inserts")){
-                String string = jedis.hget("inserts", id);
-                System.out.println(string);
-                if (string!=null){
-                    Gson gson = new Gson();
-                    hashMap = gson.fromJson(string, hashMap.getClass());
-                    return hashMap;
+                if(jedis.hexists("inserts", id)){
+                    String string = jedis.hget("inserts", id);
+                    System.out.println(string);
+                    if (string!=null){
+                        Gson gson = new Gson();
+                        hashMap = gson.fromJson(string, hashMap.getClass());
+                        return hashMap;
+                    }
                 }
             }
 
@@ -184,7 +200,7 @@ public class ProductController {
         String update_time;
 
         try {
-            product_id = (String) requests.get("id");
+            product_id = (String) requests.get("product_id");
             name = (String) requests.get("name");
             current_price = new Double((String) requests.get("current_price"));
             inventory = new Integer((String)requests.get("inventory"));
@@ -199,7 +215,6 @@ public class ProductController {
             e.printStackTrace();
             return responses;
         }
-
 
         Jedis jedis = new Jedis("123.207.218.148", 6676);
         jedis.auth("DataWareHouse2017");
@@ -220,7 +235,7 @@ public class ProductController {
 
             JSONObject jsonObject= new JSONObject(hashMap);
 
-            jedis.lpush("updates", jsonObject.toString());
+            jedis.hset("updates",product_id, jsonObject.toString());
 
             System.out.println(jsonObject.toString());
 
@@ -237,6 +252,28 @@ public class ProductController {
 
         jedis.close();
         System.out.println(responses);
+        return responses;
+
+    }
+
+    @GetMapping("/deleteProduct")
+    @ResponseBody
+    public Object deleteProduct(@RequestParam("id") String id){
+        HashMap<Object, Object> responses = new HashMap<>();
+
+
+        Jedis jedis = new Jedis("123.207.218.148", 6676);
+        jedis.auth("DataWareHouse2017");
+        try{
+            jedis.hset("deletes", id, "xxx");
+            responses.put("code", 0);
+        }catch (Exception e){
+            responses.put("code", 1);
+            e.printStackTrace();
+
+        }
+        jedis.close();
+        System.out.println("删除成功");
         return responses;
 
     }
