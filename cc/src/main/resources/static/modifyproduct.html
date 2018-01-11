@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>SB Admin - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-app="myApp" ng-controller="siteCtrl">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="../index.html">销售管理</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">查询</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="index.html">类别查询</a>
+            </li>
+            <li>
+              <a href="cards.html">地址查询</a>
+            </li>
+            <li>
+              <a href="tables.html">商品查询</a>
+            </li>
+            <li>
+              <a href="orders.html">订单查询</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">商品信息管理</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="newproduct.html">增加商品信息</a>
+            </li>
+            <li>
+              <a href="modifyproduct.html">修改商品信息</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-envelope"></i>
+            <span class="d-lg-none">Messages
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+            <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">New Messages:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>David Miller</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>Jane Smith</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>John Doe</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all messages</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-bell"></i>
+            <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+            <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">New Alerts:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all alerts</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 mr-lg-2" id="search_form">
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search for..." ng-model="spid">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" ng-click="form_query()">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Area Chart Example-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-area-chart"></i> 修改商品&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="btn-group  btn-group-sm select-right">
+          <button class="btn btn-default" type="button" ng-click="delete()" >删除</button>
+          <button class="btn btn-default" type="button" id="edit" href="#" >编辑</button>
+        </div>
+        </div>
+
+
+            <div>
+              <table class="table table-striped">
+                <thead>
+
+                <tr>
+                  <th>商品编号</th>
+                  <th>商品名称</th>
+                  <th>商品类别</th>
+                  <th>商品价格</th>
+                  <th>商品库存</th>
+                  <th>商品总销量</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th>{{code}}</th>
+                  <th>{{product}}</th>
+                  <th>{{category}}</th>
+                  <th>{{price}}</th>
+                  <th>{{inventory}}</th>
+                  <th>{{sales}}</th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        <div class="card-footer small text-muted"></div>
+      </div>
+
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2017</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular-route.js"></script>
+  </div>
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    var code;
+    var statu = 0;
+    var edit = document.getElementById('edit');
+    var item = document.getElementsByTagName('th');
+    var item_length = item.length-1
+    var item_value = new Array(item_length);
+
+    for(i = 0; i < item_length; i++){
+        item_value[i] = item[i].innerHTML;
+    }
+
+
+
+    var app = angular.module('myApp', []);
+    app.controller('siteCtrl', function($scope, $http) {
+
+        $scope.form_query = function () {
+//            code = document.getElementById("code").value;
+            $http.get("/product/getProductInfo?id=" + $scope.spid)
+                .then(function (response) {
+                    $scope.code = response.data.product_id;
+                    $scope.product = response.data.name;
+                    $scope.category = response.data.classfication;
+                    $scope.price = response.data.current_price;
+                    $scope.inventory = response.data.inventory;
+                    $scope.sales = response.data.has_saled;
+                    alert(response.data)
+                });
+
+        };
+
+        $scope.delete = function () {
+            code = document.getElementById("code").value;
+            alert("删除商品成功！")
+            $http.get("http://localhost:8080/product/index?code=" + code)
+                .then(function (response) {
+                    alert("删除商品成功！")
+                    $scope.productInfo = response.data;
+                });
+            alert(code);
+        };
+
+        edit.onclick =function(){
+            if(statu == 0){
+                edit.innerHTML= '保存';
+                for(i = 7; i < item_length; i++){
+                    item[i].innerHTML = '<input type="txt" class="item_input" value="'+'">';
+                }
+                statu = 1;
+            }else{
+                edit.innerHTML= '编辑';
+                var item_input = document.getElementsByClassName('item_input');
+                for(i = 7; i < item_length; i++){
+                    item_value[i] = item_input[i-7].value;
+                }
+                for(i = 7; i < item_length; i++){
+                    item[i].innerHTML = item_value[i];
+                }
+                $scope.product =  item_value[7];
+                $scope.category =  item_value[8];
+                $scope.price =  item_value[9];
+                $scope.inventory =  item_value[10];
+//                $http.get("http://localhost:8080/product/index?product_id=" + code+ "&product=" + newname +"&category=" + newcategory + "&price=" + newprice+ "&inventory=" + newinventory)
+//                    .then(function (response) {
+//                        alert("修改成功！")
+//                    });
+                $http({
+                    method: 'post',
+                    url: '/product/updateProduct',
+                    data:{
+                        "product_id": $scope.code,
+                        "name": $scope.product,
+                        "current_price": $scope.price.toString(),
+                        "inventory": $scope.inventory.toString(),
+                        "has_saled":  $scope.sales.toString(),
+                        "classification": $scope.category,
+                        "update_time": ""
+                    }
+                }).then(function successCallback(response) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                    if(response.data.code==0){
+                        alert("修改成功");
+                    }
+
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                });
+                statu = 0
+            }
+            return false;
+        }
+
+
+    });
+
+
+
+
+
+</script>

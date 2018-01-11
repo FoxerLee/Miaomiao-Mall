@@ -10,7 +10,7 @@ public class PMServiceImpl implements PMService {
 
     @Override
     public Object getDataOfDayByMonth(int month, String product_id){
-        final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miao";
+        final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miaomiao";
         final String USER = "hive";
         final String PASS = "hive";
         Connection conn = null;
@@ -25,8 +25,18 @@ public class PMServiceImpl implements PMService {
             int[] data = new int[31];
             for(int i = 0; i < data.length; i++)
                 data[i] = 0;
-            while(rs.next())
-                data[rs.getInt("day") - 1] += 1;
+            int a;
+            while(rs.next()){
+                try {
+                    a = rs.getInt(3) - 1;
+                    int has_saled = rs.getInt(4);
+                    data[a] += has_saled;
+//                    System.out.println(a);
+                }catch (Exception e){
+                    e.printStackTrace();
+                    continue;
+                }
+            }
             rs.close();
             stmt.close();
             conn.close();
@@ -42,7 +52,7 @@ public class PMServiceImpl implements PMService {
 
     @Override
     public Object getDataOfMonth(String product_id){
-        final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miao";
+        final String DB_URL = "jdbc:hive2://10.60.41.125:10000/miaomiao";
         final String USER = "hive";
         final String PASS = "hive";
         Connection conn = null;
@@ -61,8 +71,19 @@ public class PMServiceImpl implements PMService {
             for(int i = 0; i < data.length; i++)
                 data[i] = 0;
             // 累加每个月的所有天的销售量
-            while(rs.next())
-                data[rs.getInt("month") - 1] += 1;
+            int a;
+            while(rs.next()) {
+                try {
+                    a = rs.getInt(2) - 1;
+//                    System.out.println(a);
+//                    data[a] += 1;
+                    int has_saled = rs.getInt(4);
+                    data[a] += has_saled;
+                }catch (Exception e){
+                    e.printStackTrace();
+                    continue;
+                }
+            }
 
             rs.close();
             stmt.close();

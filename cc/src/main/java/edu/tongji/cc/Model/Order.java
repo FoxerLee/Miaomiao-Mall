@@ -63,4 +63,12 @@ public class Order {
     public void setProduct_id(String product_id) {
         this.product_id = product_id;
     }
+
+    public String getSales_time() {
+        return sales_time;
+    }
+
+    public void setSales_time(String sales_time) {
+        this.sales_time = sales_time;
+    }
 }

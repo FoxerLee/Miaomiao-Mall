@@ -20,8 +20,8 @@ public class OrderStatisticsController {
     @GetMapping("/day")
     public Object getDataOfDay(@RequestParam(value = "month", defaultValue = "")String month,
                                @RequestParam(value = "address", defaultValue = "")String address){
+        Map<String, Object> result = new HashMap<>();
         try{
-            Map<String, Object> result = new HashMap<>();
             long start = System.currentTimeMillis();
             if(address.equals(""))
                 result.put("data", null);
@@ -29,16 +29,19 @@ public class OrderStatisticsController {
                 result.put("data", orderStatisticsService.getDataByOfDay(Integer.parseInt(month), address));
             long end = System.currentTimeMillis();
             result.put("time", ((double)(end - start))/1000);
+            result.put("code",0);
             return result;
         }catch (Exception e){
-            return 400;
+            e.printStackTrace();
+            result.put("code",1);
         }
+        return result;
     }
 
     @GetMapping("/month")
     public Object getDataOfDay(@RequestParam(value = "address", defaultValue = "")String address){
+        Map<String, Object> result = new HashMap<>();
         try{
-            Map<String, Object> result = new HashMap<>();
             long start = System.currentTimeMillis();
             if(address.equals(""))
                 result.put("data", null);
@@ -46,9 +49,13 @@ public class OrderStatisticsController {
                 result.put("data", orderStatisticsService.getDataOfMonth(address));
             long end = System.currentTimeMillis();
             result.put("time", ((double)(end - start))/1000);
-            return result;
+
+            result.put("code",0);
+
         }catch (Exception e){
-            return 400;
+            e.printStackTrace();
+            result.put("code",1);
         }
+        return result;
     }
 }

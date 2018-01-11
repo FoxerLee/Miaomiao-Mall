@@ -19,8 +19,10 @@ public class OrderController {
 
     @GetMapping("/summary")
     public Object getSummary(@RequestParam(value = "id")String id){
+
+        System.out.println(id);
+        Map<String, Object> result = new HashMap<>();
         try{
-            Map<String, Object> result = new HashMap<>();
             long start = System.currentTimeMillis();
             if(id.equals(""))
                 result.put("data", null);
@@ -28,10 +30,15 @@ public class OrderController {
                 result.put("data", orderService.getSummaryById(id));
             long end = System.currentTimeMillis();
             result.put("time", ((double)(end - start))/1000);
+            result.put("code", 0);
             return result;
         }catch (Exception e){
-            return 400;
+            result.put("code", 1);
+            e.printStackTrace();
+//            return 400;
         }
+        System.out.println("Check Order OK");
+        return result;
 
     }
 }

@@ -24,10 +24,11 @@ public class CMController {
      * @return
      */
     @GetMapping("/day")
-    public Object getDataOfDayByMonth(@RequestParam(value = "id",defaultValue = "")String id,
+    // 这里的classifiication_id指的是名称了
+    public Object getDataOfDayByMonth(@RequestParam(value = "name",defaultValue = "")String id,
                                  @RequestParam(value = "month", defaultValue = "1")String month){
+        Map<String, Object> result = new HashMap<>();
         try{
-            Map<String, Object> result = new HashMap<>();
             long start = System.currentTimeMillis();
             if(id.equals(""))
                 result.put("data",null);
@@ -35,11 +36,12 @@ public class CMController {
                 result.put("data", cmService.getDataOfDaysByMonth(Integer.parseInt(month), id));
             long end = System.currentTimeMillis();
             result.put("time", ((double)(end - start))/1000);
-            return result;
+            result.put("code", 0);
         }catch (Exception e){
-            System.out.println(e);
-            return 400;
+            e.printStackTrace();
+            result.put("code", 1);
         }
+        return result;
     }
 
     /**
@@ -48,9 +50,10 @@ public class CMController {
      * @return
      */
     @GetMapping("/month")
-    public Object getDataOfMonth(@RequestParam(value = "id", defaultValue = "")String id){
+    // 这里的classifiication_id指的是名称了
+    public Object getDataOfMonth(@RequestParam(value = "name", defaultValue = "")String id){
+        Map<String, Object> result = new HashMap<>();
         try{
-            Map<String, Object> result = new HashMap<>();
             long start = System.currentTimeMillis();
             if(id.equals(""))
                 result.put("data", null);
@@ -59,9 +62,11 @@ public class CMController {
             }
             long end = System.currentTimeMillis();
             result.put("time", ((double)(end - start))/1000);
-            return result;
+            result.put("code", 0);
         }catch (Exception e){
-            return 400;
+            e.printStackTrace();
+            result.put("code", 1);
         }
+        return result;
     }
 }
